@@ -1,0 +1,29 @@
+{
+  "name": "aws-ec2-connector",
+  "version": "1.0.0",
+  "description": "Mini node.js library for AWS EC2 connector",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DawChihLiou/aws-ec2-connector.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "aws",
+    "ec2"
+  ],
+  "author": "Daw-Chih Liou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DawChihLiou/aws-ec2-connector/issues"
+  },
+  "homepage": "https://github.com/DawChihLiou/aws-ec2-connector#readme",
+  "dependencies": {
+    "aws-sdk": "^2.7.6",
+    "express": "^4.14.0"
+  }
+}
