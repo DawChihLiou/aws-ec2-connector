@@ -1,10 +1,12 @@
 var express = require('express')
-var aws     = require('aws-sdk')
+var AWS     = require('aws-sdk')
+var cred    = require('./credential')
 
 var app     = express()
 var router  = express.Router()
 var port    = process.env.PORT || 8080
 
+AWS.config.update({ accessKeyId: cred.ACCESS_KEY_ID, secretAccessKey: cred.SECRET_ACCESS_KEY })
 
 router.use((req, res, next) => {
   // log routing
@@ -13,8 +15,15 @@ router.use((req, res, next) => {
 })
 
 // list all ec2 instances
-router.get('/list', (req, res) => {
-  res.send('/api/list')
+router.get('/list/:region', (req, res) => {
+  AWS.config.update({ region: req.params.region})
+
+  const ec2 = new AWS.EC2()
+  ec2.describeInstances((err, data) => {
+    if (err) console.error(err)
+
+    res.send(data);
+  })
 })
 
 // create new ec2 instance
